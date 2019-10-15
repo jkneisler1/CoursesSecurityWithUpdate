@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Add Course</title>
@@ -7,7 +7,14 @@
 </head>
 <body>
 
-<div th:replace="base :: nav"></div>
+<div sec:authorize="hasAuthority('ADMIN')">
+    <!-- Administrators will see this text. You can display a navbar here. -->
+    <div th:replace="base :: navAdmn"></div>
+</div>
+<div sec:authorize="hasAuthority('USER')">
+    <!-- Users will see this text. You can display a navbar here. -->
+    <div th:replace="base :: navUser"></div>
+</div>
 
 <div class="container">
 

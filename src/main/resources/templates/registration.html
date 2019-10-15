@@ -7,7 +7,14 @@
 </head>
 <body>
 
-    <div th:replace="base:: nav"></div>
+    <div sec:authorize="hasAuthority('ADMIN')">
+        <!-- Administrators will see this text. You can display a navbar here. -->
+        <div th:replace="base :: navAdmn"></div>
+    </div>
+    <div sec:authorize="hasAuthority('USER')">
+        <!-- Users will see this text. You can display a navbar here. -->
+        <div th:replace="base :: navUser"></div>
+    </div>
 
     <div class="container">
         <h4>New User Registration</h4>
